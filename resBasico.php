@@ -29,3 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "<h1>Resultado: $resultado</h1>";
 }
 ?>
+
+<button type="button" onclick="javascript:history.back()">Volver</button>
+

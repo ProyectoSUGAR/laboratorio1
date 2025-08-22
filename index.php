@@ -8,7 +8,7 @@
     <h1>Sistema de Calculadora</h1>
     
     <h2>Calculadora basica</h2>
-    <form action="resultado_basico.php" method="post">
+    <form action="resBasico.php" method="post">
         <input type="number" name="num1" step="any" required>
         <select name="operacion">
             <option value="+">+</option>

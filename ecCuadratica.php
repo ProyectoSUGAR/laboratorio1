@@ -55,6 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "<h1>Resultado:</h1>";
     echo "<p>$resultado</p>";
 
-    echo '<br><br><a href="index.php"><button>Volver</button></a>';
+    echo '<a href="index.php"><button>Volver</button></a>';
 }
 ?>
+

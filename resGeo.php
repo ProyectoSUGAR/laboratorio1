@@ -1,39 +1,80 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $valor1 = $_POST["valor1"];
-    $total = 0;
-    $pi = 3.1416;   
-        $fig = $_POST["figura"];
+    $figura = $_POST["figura"];
+    $v1 = $_POST["valor1"];
+    $v2 = isset($_POST["valor2"]) ? $_POST["valor2"] : null;
+    $resultado = "";
+    $formula = "";
 
-
-switch ($fig) {
+    switch ($figura) {
         case "cuadrado":
-            $total = $valor1 * $valor1;
+            if ($v1 > 0) {
+                $area = $v1 * $v1;
+                $resultado = "Área del cuadrado: $area";
+                $formula = "Fórmula: lado × lado = $v1 × $v1";
+            } else {
+                $resultado = "<span class='error'>Error: El lado debe ser mayor que 0</span>";
+            }
             break;
+
         case "rectangulo":
-                $valor2 = $_POST["valor2"];
-            $total = $valor1 * $valor2;
+            if ($v1 > 0 && $v2 > 0) {
+                $area = $极1 * $v2;
+                $resultado = "Área del rectángulo: $area";
+                $formula = "Fórmula: base × altura = $v1 × $v2";
+            } else {
+                $resultado = "<span class='error'>Error: Base y altura deben ser mayores que 0</span>";
+            }
             break;
+
         case "circulo":
-                     $valor2 = $_POST["valor2"];
-
-            $elevado = $valor1 * $valor2;
-            $total = $pi * $elevado;
+            if ($v1 > 0) {
+                $area = round(pi() * $v1 * $v1, 2);
+                $resultado = "Área del círculo: $area";
+                $formula = "Fórmula: π × radio² = π × $v1²";
+            } else {
+                $resultado = "<span class='error'>Error: El radio debe ser mayor que 0</span>";
+            }
             break;
+
         case "triangulo":
-                $valor2 = $_POST["valor2"];
-            $ba = $valor1 * $valor2;
-            $total = $ba / 2;
+            if ($v1 > 0 && $v2 > 0) {
+                $area = ($v1 * $v2) / 2;
+                $resultado = "Área del triángulo: $area";
+                $formula = "Fórmula: (base × altura) ÷ 2 = ($v1 × $v2) ÷ 2";
+            } else {
+                $resultado = "<span class='error'>Error: Base y altura deben ser mayores que 0</span>";
+            }
             break;
+
         default:
-            $resultado = "Operación no válida";
-            break;
+            $resultado = "<span class='error'>Figura no válida</span>";
     }
-    echo "<h1>Resultado: $total</h1>";
-    
-
-
 }
-  echo '<a href="index.php"><button>Volver</button></a>'
-
 ?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado - Áreas Geométricas</title>
+    <link rel="stylesheet" href="Css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="result-container">
+            <h2>Resultado:</h2>
+            <div class="result"><?php echo $resultado; ?></div>
+            <?php if (!empty($formula)): ?>
+            <div class="formula-info">
+                <p><?php echo $formula; ?></p>
+            </div>
+            <?php endif; ?>
+            <form action="index.php" method="get">
+                <button type="submit" class="back-btn">Volver</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

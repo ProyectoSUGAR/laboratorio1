@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         case "rectangulo":
             if ($v1 > 0 && $v2 > 0) {
-                $area = $极1 * $v2;
+                $area = $v1 * $v2;
                 $resultado = "Área del rectángulo: $area";
                 $formula = "Fórmula: base × altura = $v1 × $v2";
             } else {
@@ -78,4 +78,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </body>
 </html>
+
 
